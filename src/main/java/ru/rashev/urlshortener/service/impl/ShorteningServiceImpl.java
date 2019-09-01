@@ -1,5 +1,7 @@
 package ru.rashev.urlshortener.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import ru.rashev.urlshortener.ShortUrlComponents;
@@ -16,6 +18,8 @@ import java.util.Optional;
  */
 @Component
 public class ShorteningServiceImpl implements ShorteningService {
+
+    private static final Logger log = LoggerFactory.getLogger(ShorteningServiceImpl.class);
 
     private final String shortUrlPortSuffix;
     private final String shortUrlScheme;
@@ -43,9 +47,12 @@ public class ShorteningServiceImpl implements ShorteningService {
             String uniqueId = uniqueIdGenerator.generate(partition);
             ShortUrlComponents shortUrlComponents = new ShortUrlComponents(uniqueId, shortUrlDomain);
             bindingStorage.storeBinding(originalUrl, shortUrlComponents);
+            log.debug("Generate new shortUrlId=[{}] for originalUrl=[{}] and domain=[{}]", uniqueId, originalUrl, shortUrlDomain);
             return buildResultUrl(shortUrlDomain, uniqueId);
         } else {
             ShortUrlComponents shortUrlComponents = optionalShortUrl.get();
+            log.debug("Retrieve existent shortUrlId=[{}] for originalUrl=[{}] and domain=[{}]", shortUrlComponents.getId(),
+                    originalUrl, shortUrlComponents.getDomain());
             return buildResultUrl(shortUrlComponents.getDomain(), shortUrlComponents.getId());
         }
     }

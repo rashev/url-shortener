@@ -35,4 +35,12 @@ public class ShortUrlComponents {
     public int hashCode() {
         return Objects.hash(id, domain);
     }
+
+    @Override
+    public String toString() {
+        return "ShortUrlComponents{" +
+                "id='" + id + '\'' +
+                ", domain='" + domain + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,7 @@
 package ru.rashev.urlshortener.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.rashev.urlshortener.service.SequenceGenerator;
@@ -12,6 +14,8 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 @Component
 public class SequenceGeneratorImpl implements SequenceGenerator {
+
+    private static final Logger log = LoggerFactory.getLogger(SequenceGeneratorImpl.class);
 
     private final AtomicLong localCounter = new AtomicLong(0);
     private volatile long reservedUpperBound = 0;
@@ -45,6 +49,7 @@ public class SequenceGeneratorImpl implements SequenceGenerator {
         if (currVal == null) {
             throw new IllegalStateException("Unexpected counter value");
         }
+        log.info("Read initial value [{}]", currVal);
         return currVal;
     }
 
@@ -53,6 +58,7 @@ public class SequenceGeneratorImpl implements SequenceGenerator {
         if (nextVal == null) {
             throw new IllegalStateException("Unexpected counter next value");
         }
+        log.info("Reserved counter values up to [{}]", nextVal);
         return nextVal;
     }
 }
