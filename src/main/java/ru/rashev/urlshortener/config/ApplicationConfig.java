@@ -18,8 +18,6 @@ public class ApplicationConfig {
 
     private byte serviceInstanceId;
 
-    private int counterReservationSize;
-
     public String getDefaultDomain() {
         return defaultDomain;
     }
@@ -50,13 +48,5 @@ public class ApplicationConfig {
 
     public void setServiceInstanceId(byte serviceInstanceId) {
         this.serviceInstanceId = serviceInstanceId;
-    }
-
-    public int getCounterReservationSize() {
-        return counterReservationSize;
-    }
-
-    public void setCounterReservationSize(int counterReservationSize) {
-        this.counterReservationSize = counterReservationSize;
     }
 }

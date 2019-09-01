@@ -10,3 +10,5 @@ CREATE UNIQUE INDEX ub_short_url ON url_binding(short_url_id, short_url_domain, 
 CREATE INDEX ub_orig_url ON url_binding(original_url);
 
 CREATE SEQUENCE counter START WITH 1 INCREMENT BY 1000;
+
+SELECT NEXTVAL('counter');
