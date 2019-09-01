@@ -20,7 +20,7 @@ public class PartitionerImpl implements Partitioner {
 
     @Override
     public int partitionForOriginalUrl(String originalUrl) {
-        return originalUrl.hashCode() % PARTITIONS_COUNT;
+        return Math.abs(originalUrl.hashCode() % PARTITIONS_COUNT);
     }
 
     @Override

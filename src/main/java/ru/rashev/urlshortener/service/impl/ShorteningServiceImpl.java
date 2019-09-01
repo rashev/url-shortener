@@ -1,5 +1,6 @@
 package ru.rashev.urlshortener.service.impl;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import ru.rashev.urlshortener.ShortUrlComponents;
 import ru.rashev.urlshortener.config.ApplicationConfig;
@@ -23,7 +24,8 @@ public class ShorteningServiceImpl implements ShorteningService {
     private final UrlBindingStorage bindingStorage;
     private final Partitioner partitioner;
 
-    public ShorteningServiceImpl(UniqueIdGenerator uniqueIdGenerator, UrlBindingStorage bindingStorage,
+    public ShorteningServiceImpl(UniqueIdGenerator uniqueIdGenerator,
+                                 @Qualifier("h2UrlBindingStorage") UrlBindingStorage bindingStorage,
                                  Partitioner partitioner, ApplicationConfig config) {
         this.uniqueIdGenerator = uniqueIdGenerator;
         this.bindingStorage = bindingStorage;
