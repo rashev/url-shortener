@@ -36,7 +36,7 @@ public class RedirectController {
                 HttpHeaders headers = new HttpHeaders();
                 headers.add("Location", originalUrl.get());
                 headers.add("Connection", "close");
-                responseEntity = new ResponseEntity<>(headers, HttpStatus.PERMANENT_REDIRECT);
+                responseEntity = new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);
             } else {
                 responseEntity = new ResponseEntity<>("Page not found", HttpStatus.NOT_FOUND);
             }

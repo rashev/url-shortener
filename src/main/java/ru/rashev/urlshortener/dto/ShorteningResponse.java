@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ShorteningResponse {
     private final String shortUrl;
 
-    public ShorteningResponse(String shortUrl) {
+    public ShorteningResponse(@JsonProperty("shortUrl") String shortUrl) {
         this.shortUrl = shortUrl;
     }
 

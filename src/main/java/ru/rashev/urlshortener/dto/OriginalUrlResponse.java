@@ -13,7 +13,8 @@ public class OriginalUrlResponse {
     private final String originalUrl;
     private final boolean exists;
 
-    public OriginalUrlResponse(String originalUrl, boolean exists) {
+    public OriginalUrlResponse(@JsonProperty("originalUrl") String originalUrl,
+                               @JsonProperty("exists") boolean exists) {
         this.originalUrl = originalUrl;
         this.exists = exists;
     }

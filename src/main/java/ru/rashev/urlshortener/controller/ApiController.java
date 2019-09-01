@@ -42,7 +42,7 @@ public class ApiController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "originalUrl", method = RequestMethod.GET)
+    @RequestMapping(value = "originalUrl", method = RequestMethod.POST)
     public OriginalUrlResponse getOriginalUrl(@Valid @RequestBody OriginalUrlRequest request) {
         try {
             Optional<String> optionalOriginalUrl = shorteningService.getOriginalUrlBy(request.getShortUrlId(),
